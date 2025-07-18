@@ -484,6 +484,8 @@ A N Y G A   P L E B A
         <li><strong>PC-PTSD-5</strong> – Prins A et al., 2016</li>
         <li><strong>SF-1</strong> – Ware J &amp; Sherbourne CD, 1992</li>
         <li><strong>PEG-3</strong> – Krebs EE et al., 2009</li>
+        <li><strong>SARC-F</strong> – Malmstrom TK et al., 2013</li>
+        <li><strong>Katz Index of Independence in ADLs</strong> – Katz S et al., 1963</li>
         <li><strong>Hunger Vital Sign™</strong> – Hager ER et al., 2010</li>
         <li><strong>PRAPARE</strong> Social Risk Items – NACHC, 2016</li>
         <li><strong>UCLA Loneliness Scale (OSS-3)</strong> – Hughes ME et al., 2004</li>
@@ -496,6 +498,12 @@ A N Y G A   P L E B A
 
   <script>
     function positive(flag) { return flag ? 1 : 0; }
+
+    // NEW: safely get integer value of an input/select by id; returns 0 if element missing or blank
+    function getInt(id) {
+      const el = document.getElementById(id);
+      return el ? parseInt(el.value || 0) || 0 : 0;
+    }
 
     function calculateResults() {
       const sex = document.querySelector('input[name="sex"]:checked');
@@ -636,12 +644,23 @@ A N Y G A   P L E B A
 
       // C-SSRS risk evaluation
       let cssrsRisk = '';
-      if(!document.getElementById('cssrsBlock').classList.contains('hidden')){
-        const c1=parseInt(document.getElementById('cssrs1').value), c2=parseInt(document.getElementById('cssrs2').value), c3=parseInt(document.getElementById('cssrs3').value||0), c4=parseInt(document.getElementById('cssrs4').value||0), c5=parseInt(document.getElementById('cssrs5').value||0), c6=parseInt(document.getElementById('cssrs6').value);
-        if(c6||c5||c4){ cssrsRisk='High – Active plan/intent or behavior. Requires immediate safety plan and emergency evaluation.'; }
-        else if(c2){ cssrsRisk='Moderate – Active suicidal thoughts. Complete safety plan and refer for urgent mental-health evaluation.'; }
-        else if(c1){ cssrsRisk='Low – Passive death wish. Provide 988 resources and monitor.'; }
-        else { cssrsRisk='No suicidal ideation reported.'; }
+      const cssrsBlockEl = document.getElementById('cssrsBlock');
+      if (cssrsBlockEl && !cssrsBlockEl.classList.contains('hidden')) {
+        const c1 = getInt('cssrs1');
+        const c2 = getInt('cssrs2');
+        const c3 = getInt('cssrs3');
+        const c4 = getInt('cssrs4');
+        const c5 = getInt('cssrs5');
+        const c6 = getInt('cssrs6');
+        if (c6 || c5 || c4) {
+          cssrsRisk = 'High – Active plan/intent or behavior. Requires immediate safety plan and emergency evaluation.';
+        } else if (c2) {
+          cssrsRisk = 'Moderate – Active suicidal thoughts. Complete safety plan and refer for urgent mental-health evaluation.';
+        } else if (c1) {
+          cssrsRisk = 'Low – Passive death wish. Provide 988 resources and monitor.';
+        } else {
+          cssrsRisk = 'No suicidal ideation reported.';
+        }
       }
 
       // Display results
@@ -681,21 +700,29 @@ A N Y G A   P L E B A
       document.getElementById('substanceBlock').classList.toggle('hidden', !show);
     }
     // Toggle CSSRS detail questions
-    function toggleCssrsDetail(){
-      const show = parseInt(document.getElementById('cssrs2').value) === 1;
-      document.getElementById('cssrsDetail').classList.toggle('hidden', !show);
+    function toggleCssrsDetail() {
+      const trigger = document.getElementById('cssrs2');
+      const detail = document.getElementById('cssrsDetail');
+      if (!trigger || !detail) return; // guard if elements are absent
+      const show = parseInt(trigger.value) === 1;
+      detail.classList.toggle('hidden', !show);
     }
 
     // Toggle C-SSRS block based on PHQ-2 score ≥3 OR PHQ-9 item 9 >0
-    function toggleCssrs(){
-      const phq1v=parseInt(document.getElementById('phq1').value||0);
-      const phq2v=parseInt(document.getElementById('phq2').value||0);
-      const phq2Score=phq1v+phq2v;
-      const phq9El=document.getElementById('phq9');
-      const phq9Flag=phq9El?parseInt(phq9El.value||0)>0:false;
-      const show = phq2Score>=3 || phq9Flag;
-      document.getElementById('cssrsBlock').classList.toggle('hidden', !show);
-      if(show){ toggleCssrsDetail(); }
+    function toggleCssrs() {
+      const phq1v = getInt('phq1');
+      const phq2v = getInt('phq2');
+      const phq2Score = phq1v + phq2v;
+      const phq9El = document.getElementById('phq9');
+      const phq9Flag = phq9El ? parseInt(phq9El.value || 0) > 0 : false;
+      const show = phq2Score >= 3 || phq9Flag;
+
+      const cssrsBlock = document.getElementById('cssrsBlock');
+      if (!cssrsBlock) return; // block not present – nothing to toggle
+      cssrsBlock.classList.toggle('hidden', !show);
+      if (show) {
+        toggleCssrsDetail();
+      }
     }
     document.addEventListener('change', (e)=>{
       if(e.target && (e.target.id==='phq1'||e.target.id==='phq2')) toggleCssrs();
