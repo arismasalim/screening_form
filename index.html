@@ -460,6 +460,135 @@ A N Y G A   P L E B A
       </div>
     </fieldset>
 
+    <!-- Intent to Engage in Care (Intent-to-Attend Scale) -->
+    <fieldset>
+      <legend>Intent to Engage in Care</legend>
+      <p>For each statement below, please select the option that best describes your agreement <em>right now</em>.</p>
+      <p style="font-size:0.9em; margin-top:-10px;">
+        Scale: 1 = Strongly disagree,&nbsp; 2 = Disagree,&nbsp; 3 = Neutral/Unsure,&nbsp; 4 = Agree,&nbsp; 5 = Strongly agree
+      </p>
+
+      <!-- Attitude -->
+      <label>1. Completing the follow-up appointments recommended to me would benefit my health.
+        <select id="intent1">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+      <label>2. Following the treatment plan is important to me.
+        <select id="intent2">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+
+      <!-- Subjective Norm -->
+      <label>3. People who are important to me would support me in attending follow-up visits.
+        <select id="intent3">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+      <label>4. My healthcare team expects me to keep my recommended appointments.
+        <select id="intent4">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+
+      <!-- Perceived Behavioral Control -->
+      <label>5. I feel confident I can attend follow-up appointments even if it is inconvenient.
+        <select id="intent5">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+      <label>6. Transportation or scheduling issues will <strong>not</strong> prevent me from attending appointments.
+        <select id="intent6">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+
+      <!-- Behavioral Intention -->
+      <label>7. I intend to attend all recommended follow-up appointments.
+        <select id="intent7">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+      <label>8. I plan to use the social service referrals provided to me.
+        <select id="intent8">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <!-- Barriers & Safety Risks -->
+    <fieldset>
+      <legend>Barriers &amp; Safety Risks</legend>
+
+      <p style="font-size:0.9em;">These questions help us understand and reduce any risks that could interfere with your care or safety. Please answer Yes or No.</p>
+
+      <!-- Violence / Harm to Others (adapted from HCR-20 and community violence literature) -->
+      <h4 style="margin-bottom:4px;">Risk of Harm to Others</h4>
+      <label>a. In the past month, have you had serious thoughts about physically harming someone? 
+        <select id="harmOthers"><option value="0">No</option><option value="1">Yes</option></select>
+      </label>
+      <label>b. Do you currently have access to a gun or other lethal weapon at home or work? 
+        <select id="weaponAccess"><option value="0">No</option><option value="1">Yes</option></select>
+      </label>
+
+      <!-- Opioid Overdose Risk (WHO/CDC overdose risk factors) -->
+      <h4 style="margin-bottom:4px;">Opioid Overdose Risk</h4>
+      <label>c. Have you <strong>ever</strong> had an opioid overdose that required Narcan (naloxone) or hospital care? 
+        <select id="odHistory"><option value="0">No</option><option value="1">Yes</option></select>
+      </label>
+      <label>d. In the past 3&nbsp;months, have you used opioids together with alcohol, benzodiazepines, or sleeping pills? 
+        <select id="odPoly"><option value="0">No</option><option value="1">Yes</option></select>
+      </label>
+      <label>e. Do you currently have naloxone (Narcan) available or know where to get it quickly? 
+        <select id="odNaloxone"><option value="0">No</option><option value="1">Yes</option></select>
+      </label>
+
+      <!-- Intimate Partner / Community Violence (brief HITS / danger assessment items) -->
+      <h4 style="margin-bottom:4px;">Threats or Violence from Others</h4>
+      <label>f. Are you currently afraid of a partner, ex-partner, or someone else in your life? 
+        <select id="threatFear"><option value="0">No</option><option value="1">Yes</option></select>
+      </label>
+      <label>g. In the past year, has a partner ever hit, slapped, kicked, or otherwise physically hurt you? 
+        <select id="ipvPhysical"><option value="0">No</option><option value="1">Yes</option></select>
+      </label>
+      <label>h. Have you been forced to have sexual activities against your will in the past year? 
+        <select id="ipvSexual"><option value="0">No</option><option value="1">Yes</option></select>
+      </label>
+    </fieldset>
+
     <!-- Delayed Recall Entry -->
     <fieldset id="recallBlock" style="margin-top:20px;">
       <legend>Word Recall</legend>
