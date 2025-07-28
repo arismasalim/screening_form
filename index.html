@@ -297,7 +297,7 @@
         <label>a. What <u>year</u> is it? <input type="number" id="orientYear" style="width:90px;" /></label>
         <label>b. What <u>month</u> is it? (1-12 or name) <input type="text" id="orientMonth" style="width:120px;" /></label>
         <label>c. What <u>day of the week</u> is it? <input type="text" id="orientDOW" style="width:120px;" /></label>
-        <p>Remember the words <em>APPLE – TABLE – PENNY</em>. You will be asked to recall them later.</p>
+        <p id="memoryWords">Remember the words <em>APPLE – TABLE – PENNY</em>. You will be asked to recall them later.</p>
         <hr/>
         <p><strong>Letter Cancellation Attention Test (20 seconds)</strong></p>
         <p>Cross out every letter <strong>A</strong> you see in the grid below <em>in 20 seconds</em>.</p>
@@ -868,6 +868,18 @@ A N Y G A   P L E B A
         remaining--; msg.textContent=remaining+'s';
         if(remaining<=0){ clearInterval(interval); grid.style.display='none'; msg.textContent='Time\'s up'; }
       },1000);
+    });
+
+    // Hide the memory words after 60 seconds regardless of load timing
+    (function(){
+      const hideWords=()=>{ const mw=document.getElementById('memoryWords'); if(mw) mw.style.display='none'; };
+      setTimeout(hideWords,60000);
+    })();
+
+    document.addEventListener('change', (e)=>{
+      if(e.target && (e.target.id==='phq1'||e.target.id==='phq2')) toggleCssrs();
+      if(e.target && (e.target.id==='asq1'||e.target.id==='asq2'||e.target.id==='asq3'||e.target.id==='asq4')) toggleAsq5();
+      if(e.target && e.target.id==='cssrs2') toggleCssrsDetail();
     });
 
     document.getElementById('printBtn').addEventListener('click', () => window.print());
