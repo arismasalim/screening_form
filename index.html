@@ -478,28 +478,9 @@ A N Y G A   P L E B A
           <option value="5">5</option>
         </select>
       </label>
-      <label>2. Following the treatment plan is important to me.
-        <select id="intent2">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </label>
-
       <!-- Subjective Norm -->
-      <label>3. People who are important to me would support me in attending follow-up visits.
+      <label>2. People who are important to me would support me in attending follow-up visits.
         <select id="intent3">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </label>
-      <label>4. My healthcare team expects me to keep my recommended appointments.
-        <select id="intent4">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -509,7 +490,7 @@ A N Y G A   P L E B A
       </label>
 
       <!-- Perceived Behavioral Control -->
-      <label>5. I feel confident I can attend follow-up appointments even if it is inconvenient.
+      <label>3. I feel confident I can attend follow-up appointments even if it is inconvenient.
         <select id="intent5">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -518,7 +499,7 @@ A N Y G A   P L E B A
           <option value="5">5</option>
         </select>
       </label>
-      <label>6. Transportation or scheduling issues will <strong>not</strong> prevent me from attending appointments.
+      <label>4. Transportation or scheduling issues will <strong>not</strong> prevent me from attending appointments.
         <select id="intent6">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -529,7 +510,7 @@ A N Y G A   P L E B A
       </label>
 
       <!-- Behavioral Intention -->
-      <label>7. I intend to attend all recommended follow-up appointments.
+      <label>5. I intend to attend all recommended follow-up appointments.
         <select id="intent7">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -538,14 +519,24 @@ A N Y G A   P L E B A
           <option value="5">5</option>
         </select>
       </label>
-      <label>8. I plan to use the social service referrals provided to me.
-        <select id="intent8">
-          <option value="1">1</option>
+
+      <!-- NEW follow-through and feedback questions -->
+      <label>6. How likely are you to follow through on the recommendations provided today?
+        <select id="intent9">
+          <option value="1">1 – Not at all likely</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
-          <option value="5">5</option>
+          <option value="5">5 – Extremely likely</option>
         </select>
+      </label>
+
+      <label>7. Which recommendation do you feel will be most beneficial for you?
+        <input type="text" id="intentBenefit" placeholder="Type your answer here" style="width:100%;" />
+      </label>
+
+      <label>8. Is there any other referral or recommendation that would be helpful but wasn’t provided or listed?
+        <input type="text" id="intentOther" placeholder="Type your suggestion here" style="width:100%;" />
       </label>
     </fieldset>
 
